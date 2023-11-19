@@ -1,0 +1,4 @@
+data/lag_benchmark/
+mlruns/
+lightning_logs/
+*.zip
