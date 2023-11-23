@@ -1,4 +1,5 @@
 import argparse
+import datetime
 import torch
 from torch.utils.data import DataLoader
 from pytorch_lightning import Trainer
@@ -30,7 +31,7 @@ def main(args):
     mlflow.pytorch.autolog()
 
     # Train the model.
-    with mlflow.start_run() as run:
+    with mlflow.start_run(run_name=args.run_name) as run:
         trainer.fit(model, dataloader)
 
     # モデルの保存
@@ -50,6 +51,10 @@ if __name__ == "__main__":
     parser.add_argument('--csv_file', type=str, default='data/lagenda_annotation.csv')
     parser.add_argument('--root_dir', type=str, default='data/')
     parser.add_argument('--save_model_path', type=str, default='trained_model.pth')
+    parser.add_argument('--run_name', type=str, default='default_run')
 
     args = parser.parse_args()
+    # --run_nameがない場合は、実行時の日時がrun_nameになる
+    if args.run_name == 'default_run':
+        args.run_name = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
     main(args)

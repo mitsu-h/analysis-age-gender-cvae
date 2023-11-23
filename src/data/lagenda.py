@@ -44,6 +44,9 @@ class LagendaDataset(Dataset):
     def __getitem__(self, idx):
         img_name = os.path.join(self.root_dir, self.annotations.iloc[idx, 0])
         image = Image.open(img_name)
+        # faceの領域で顔を切り出す
+        image = image.crop((self.annotations.iloc[idx, 3], self.annotations.iloc[idx, 4], self.annotations.iloc[idx, 5], self.annotations.iloc[idx, 6]))
+
         age = self.annotations.iloc[idx, 1]
         gender = self.annotations.iloc[idx, 2]
 
