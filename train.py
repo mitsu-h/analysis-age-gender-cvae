@@ -17,7 +17,7 @@ def main(args):
     transform = get_transforms()
 
     # データセットとデータローダーの設定
-    dataset = LagendaDataset(csv_file=args.csv_file, root_dir=args.root_dir, transform=transform)
+    dataset = LagendaDataset(csv_file=args.csv_file, root_dir=args.root_dir, crop_type=args.crop_type, transform=transform)
     dataloader = DataLoader(dataset, batch_size=args.batch_size, shuffle=True, num_workers=11, persistent_workers=True)
 
     # モデルのインスタンス化
@@ -52,6 +52,7 @@ if __name__ == "__main__":
     parser.add_argument('--root_dir', type=str, default='data/')
     parser.add_argument('--save_model_path', type=str, default='trained_model.pth')
     parser.add_argument('--run_name', type=str, default='default_run')
+    parser.add_argument('--crop_type', type=str, default='face')
 
     args = parser.parse_args()
     # --run_nameがない場合は、実行時の日時がrun_nameになる
