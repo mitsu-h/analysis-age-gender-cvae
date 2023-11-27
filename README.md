@@ -1,5 +1,5 @@
 # analysis-age-gender-cvae
-
+TODO: こんな感じのディレクトリ構成にする
 ```
 project_root/
 │
