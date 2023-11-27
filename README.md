@@ -1,5 +1,6 @@
 # analysis-age-gender-cvae
 
+```
 project_root/
 │
 ├── src/                   # ソースコード
@@ -22,3 +23,4 @@ project_root/
 ├── README.md              # プロジェクトの説明
 ├── requirements.txt       # 必要なPythonパッケージ
 └── .gitignore             # gitが無視するファイル/ディレクトリ
+```
